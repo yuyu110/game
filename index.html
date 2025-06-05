@@ -3,39 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Survivors - Epic Survival Action Game | Play Free Online</title>
-    <meta name="description" content="Play Monster Survivors online free! Epic survival action game where you battle endless waves of monsters. Perfect for PC and mobile. Start playing now!">
-    <meta name="keywords" content="Monster Survivors, survival game, action game, online game, free game, browser game">
-    <meta name="author" content="HaveFunGame.store">
-    <link rel="canonical" href="https://havefungame.store/">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Monster Survivors - Epic Survival Action Game">
-    <meta property="og:description" content="Play Monster Survivors online free! Battle endless waves of monsters in this epic survival action game.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://havefungame.store/">
-    <meta property="og:site_name" content="HaveFunGame.store">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Monster Survivors - Epic Survival Action Game">
-    <meta name="twitter:description" content="Play Monster Survivors online free! Battle endless waves of monsters in this epic survival action game.">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Game",
-        "name": "Monster Survivors",
-        "description": "Epic survival action game where you battle endless waves of monsters",
-        "url": "https://havefungame.store/",
-        "genre": ["Action", "Survival"],
-        "gamePlatform": ["Web Browser", "PC", "Mobile"],
-        "operatingSystem": ["Any"],
-        "applicationCategory": "Game"
-    }
-    </script>
-    
+    <title>Super Mario Bros - Complete Web Game</title>
     <style>
         * {
             margin: 0;
@@ -44,397 +12,690 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #1d1d1f;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background: linear-gradient(to bottom, #5C94FC 0%, #5C94FC 70%, #00D800 70%, #00D800 100%);
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
         }
         
-        .container {
-            max-width: 1200px;
+        #gameCanvas {
+            display: block;
             margin: 0 auto;
-            padding: 0 20px;
+            border: 3px solid #000;
+            background: linear-gradient(to bottom, #5C94FC 0%, #5C94FC 70%, #00D800 70%, #00D800 100%);
         }
         
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 20px 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
+        .ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px #000;
             z-index: 100;
         }
         
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #007aff;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: #1d1d1f;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #007aff;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             color: white;
-            padding: 80px 0;
             text-align: center;
+            font-size: 14px;
+            text-shadow: 1px 1px 0px #000;
         }
         
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
+        .ripple {
+            position: absolute;
+            border: 2px solid rgba(100, 200, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: ripple-animation 0.6s ease-out;
         }
         
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .play-button {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .play-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        /* Game Container */
-        .game-section {
-            background: white;
-            padding: 60px 0;
-        }
-        
-        .game-container {
-            background: #f5f5f7;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .game-frame {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Content Sections */
-        .content-section {
-            padding: 80px 0;
-        }
-        
-        .content-section:nth-child(even) {
-            background: #f5f5f7;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            margin-bottom: 15px;
-        }
-        
-        .section-description {
-            font-size: 1.2rem;
-            color: #6e6e73;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-        
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-        
-        .feature-card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #1d1d1f;
-        }
-        
-        .feature-card p {
-            color: #6e6e73;
-            line-height: 1.6;
-        }
-        
-        /* Footer */
-        footer {
-            background: #1d1d1f;
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: #a1a1a6;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @keyframes ripple-animation {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
             }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .game-container {
-                padding: 20px;
-            }
-            
-            .game-frame {
-                height: 400px;
-            }
-            
-            .section-header h2 {
-                font-size: 2rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
+            100% {
+                width: 60px;
+                height: 60px;
+                opacity: 0;
             }
         }
         
-        @media (max-width: 480px) {
-            .hero {
-                padding: 60px 0;
+        .coin-popup {
+            position: absolute;
+            color: #FFD700;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 1px 1px 0px #000;
+            pointer-events: none;
+            animation: coin-popup 1s ease-out;
+        }
+        
+        @keyframes coin-popup {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
             }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .game-frame {
-                height: 350px;
-            }
-            
-            .feature-card {
-                padding: 30px 20px;
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">HaveFunGame.store</a>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="#game">Play Now</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <div class="ui">
+        <div>Score: <span id="score">0</span></div>
+        <div>Coins: <span id="coins">0</span></div>
+        <div>Lives: <span id="lives">3</span></div>
+    </div>
+    
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    
+    <div class="controls">
+        Use ARROW KEYS to move, SPACEBAR to jump<br>
+        Collect coins by jumping and hitting mushroom blocks!
+    </div>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Monster Survivors</h1>
-            <p class="hero-subtitle">Battle endless waves of monsters in this epic survival action game</p>
-            <a href="#game" class="play-button">Play Now Free</a>
-        </div>
-    </section>
-
-    <section class="game-section" id="game">
-        <div class="container">
-            <div class="game-container">
-                <iframe 
-                    src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.HTML"
-                    class="game-frame"
-                    title="Monster Survivors Game"
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Monster Survivors</h2>
-                <p class="section-description">
-                    Monster Survivors is an intense survival action game that challenges players to fight against endless waves of terrifying monsters. 
-                    Set in a dark and atmospheric world, you must use strategy, quick reflexes, and powerful weapons to survive as long as possible. 
-                    Each wave brings stronger enemies and greater challenges, testing your skills and determination to the limit.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>Game Features</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚔️</div>
-                    <h3>Epic Combat System</h3>
-                    <p>Experience intense real-time combat with a variety of weapons and special abilities. Master different fighting styles to survive longer.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👹</div>
-                    <h3>Diverse Monster Types</h3>
-                    <p>Face dozens of unique monster types, each with their own attack patterns and weaknesses. Adapt your strategy for each enemy type.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Progressive Difficulty</h3>
-                    <p>Challenge yourself with increasingly difficult waves. The longer you survive, the greater the rewards and achievements you'll unlock.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Cross-Platform Play</h3>
-                    <p>Play seamlessly on PC, tablet, or mobile device. Your progress syncs across all platforms for maximum convenience.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎮</div>
-                    <h3>Intuitive Controls</h3>
-                    <p>Easy-to-learn controls that work perfectly on both touch screens and traditional input devices. Jump in and start playing immediately.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌟</div>
-                    <h3>Regular Updates</h3>
-                    <p>Enjoy new content, monsters, weapons, and features added regularly. The adventure never ends with constant improvements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>How to Play</h2>
-                <p class="section-description">
-                    Getting started with Monster Survivors is easy! Use your mouse or touch controls to move your character around the battlefield. 
-                    Your character automatically attacks nearby enemies, but positioning and timing are crucial for survival. 
-                    Collect power-ups and coins dropped by defeated monsters to upgrade your abilities and unlock new weapons. 
-                    The key to success is learning each monster's behavior pattern and using the environment to your advantage. 
-                    Can you survive long enough to face the ultimate boss monsters?
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="/">Home</a>
-                    <a href="#game">Play Game</a>
-                    <a href="#about">About</a>
-                    <a href="#features">Features</a>
-                    <a href="/privacy">Privacy Policy</a>
-                    <a href="/terms">Terms of Service</a>
-                </div>
-                <p>&copy; 2025 HaveFunGame.store. All rights reserved. Play Monster Survivors and more amazing games online!</p>
-            </div>
-        </div>
-    </footer>
+    <script>
+        class MarioGame {
+            constructor() {
+                this.canvas = document.getElementById('gameCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.camera = { x: 0, y: 0 };
+                
+                // Game state
+                this.score = 0;
+                this.coins = 0;
+                this.lives = 3;
+                
+                // Input handling
+                this.keys = {};
+                this.setupEventListeners();
+                
+                // Game objects
+                this.mario = new Mario(100, 300);
+                this.platforms = this.createPlatforms();
+                this.enemies = this.createEnemies();
+                this.blocks = this.createBlocks();
+                this.particles = [];
+                this.coinEffects = [];
+                
+                // Audio context for sound effects
+                this.createAudioContext();
+                
+                // Start game loop
+                this.lastTime = 0;
+                this.gameLoop(0);
+            }
+            
+            createAudioContext() {
+                try {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                } catch(e) {
+                    console.log('Audio not supported');
+                }
+            }
+            
+            playSound(frequency, duration, type = 'square') {
+                if (!this.audioContext) return;
+                
+                const oscillator = this.audioContext.createOscillator();
+                const gainNode = this.audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
+                oscillator.type = type;
+                
+                gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration);
+                
+                oscillator.start(this.audioContext.currentTime);
+                oscillator.stop(this.audioContext.currentTime + duration);
+            }
+            
+            setupEventListeners() {
+                document.addEventListener('keydown', (e) => {
+                    this.keys[e.code] = true;
+                    if (e.code === 'Space') {
+                        e.preventDefault();
+                    }
+                });
+                
+                document.addEventListener('keyup', (e) => {
+                    this.keys[e.code] = false;
+                });
+                
+                // Enable audio context on first user interaction
+                document.addEventListener('click', () => {
+                    if (this.audioContext && this.audioContext.state === 'suspended') {
+                        this.audioContext.resume();
+                    }
+                }, { once: true });
+            }
+            
+            createPlatforms() {
+                return [
+                    new Platform(0, 350, 800, 50),
+                    new Platform(300, 280, 100, 20),
+                    new Platform(500, 220, 100, 20),
+                    new Platform(700, 160, 100, 20),
+                    new Platform(900, 300, 200, 20),
+                    new Platform(1200, 250, 150, 20),
+                ];
+            }
+            
+            createEnemies() {
+                return [
+                    new Goomba(400, 330),
+                    new Goomba(600, 330),
+                    new Goomba(1000, 280),
+                    new Goomba(1300, 230),
+                ];
+            }
+            
+            createBlocks() {
+                return [
+                    new Block(350, 250, 'mushroom'),
+                    new Block(400, 250, 'brick'),
+                    new Block(450, 250, 'mushroom'),
+                    new Block(550, 190, 'mushroom'),
+                    new Block(750, 130, 'mushroom'),
+                    new Block(950, 270, 'mushroom'),
+                    new Block(1000, 270, 'brick'),
+                    new Block(1050, 270, 'mushroom'),
+                ];
+            }
+            
+            update(deltaTime) {
+                // Update Mario
+                this.mario.update(deltaTime, this.keys, this.platforms, this.blocks, this);
+                
+                // Update enemies
+                this.enemies.forEach(enemy => enemy.update(deltaTime, this.platforms));
+                
+                // Update particles
+                this.particles = this.particles.filter(particle => {
+                    particle.update(deltaTime);
+                    return particle.life > 0;
+                });
+                
+                // Update coin effects
+                this.coinEffects = this.coinEffects.filter(effect => {
+                    effect.life -= deltaTime;
+                    return effect.life > 0;
+                });
+                
+                // Check collisions
+                this.checkCollisions();
+                
+                // Update camera to follow Mario
+                this.updateCamera();
+                
+                // Update UI
+                this.updateUI();
+            }
+            
+            checkCollisions() {
+                // Mario vs Enemies
+                this.enemies.forEach((enemy, index) => {
+                    if (this.mario.isColliding(enemy)) {
+                        if (this.mario.vy > 0 && this.mario.y < enemy.y) {
+                            // Mario jumps on enemy
+                            this.enemies.splice(index, 1);
+                            this.mario.vy = -300;
+                            this.score += 100;
+                            this.playSound(800, 0.1);
+                            this.createParticles(enemy.x + enemy.width/2, enemy.y + enemy.height/2, '#8B4513');
+                        } else {
+                            // Mario gets hurt
+                            this.lives--;
+                            this.mario.x -= 50;
+                            this.playSound(200, 0.5, 'sawtooth');
+                            if (this.lives <= 0) {
+                                this.resetGame();
+                            }
+                        }
+                    }
+                });
+            }
+            
+            updateCamera() {
+                const targetX = this.mario.x - this.canvas.width / 2;
+                this.camera.x = Math.max(0, Math.min(targetX, 1000));
+            }
+            
+            updateUI() {
+                document.getElementById('score').textContent = this.score;
+                document.getElementById('coins').textContent = this.coins;
+                document.getElementById('lives').textContent = this.lives;
+            }
+            
+            createRipple(x, y) {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = (x - this.camera.x - 30) + 'px';
+                ripple.style.top = (y - 30) + 'px';
+                document.body.appendChild(ripple);
+                
+                setTimeout(() => {
+                    document.body.removeChild(ripple);
+                }, 600);
+            }
+            
+            createCoinEffect(x, y) {
+                this.coinEffects.push({
+                    x: x,
+                    y: y,
+                    life: 1.0
+                });
+                
+                const popup = document.createElement('div');
+                popup.className = 'coin-popup';
+                popup.textContent = '+1 COIN';
+                popup.style.left = (x - this.camera.x) + 'px';
+                popup.style.top = (y - 20) + 'px';
+                document.body.appendChild(popup);
+                
+                setTimeout(() => {
+                    if (document.body.contains(popup)) {
+                        document.body.removeChild(popup);
+                    }
+                }, 1000);
+            }
+            
+            createParticles(x, y, color) {
+                for (let i = 0; i < 8; i++) {
+                    this.particles.push(new Particle(x, y, color));
+                }
+            }
+            
+            resetGame() {
+                this.mario = new Mario(100, 300);
+                this.enemies = this.createEnemies();
+                this.blocks = this.createBlocks();
+                this.camera.x = 0;
+                this.lives = 3;
+                this.score = 0;
+                this.coins = 0;
+            }
+            
+            render() {
+                // Clear canvas
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Save context for camera transform
+                this.ctx.save();
+                this.ctx.translate(-this.camera.x, -this.camera.y);
+                
+                // Draw background elements
+                this.drawBackground();
+                
+                // Draw platforms
+                this.platforms.forEach(platform => platform.draw(this.ctx));
+                
+                // Draw blocks
+                this.blocks.forEach(block => block.draw(this.ctx));
+                
+                // Draw enemies
+                this.enemies.forEach(enemy => enemy.draw(this.ctx));
+                
+                // Draw Mario
+                this.mario.draw(this.ctx);
+                
+                // Draw particles
+                this.particles.forEach(particle => particle.draw(this.ctx));
+                
+                // Restore context
+                this.ctx.restore();
+                
+                // Draw coin effects (in screen space)
+                this.coinEffects.forEach(effect => {
+                    this.ctx.fillStyle = `rgba(255, 215, 0, ${effect.life})`;
+                    this.ctx.font = '16px Arial';
+                    this.ctx.fillText('★', effect.x - this.camera.x, effect.y - (1 - effect.life) * 30);
+                });
+            }
+            
+            drawBackground() {
+                // Draw clouds
+                this.ctx.fillStyle = 'white';
+                for (let i = 0; i < 5; i++) {
+                    const x = i * 300 + 100;
+                    const y = 50 + Math.sin(Date.now() * 0.001 + i) * 10;
+                    this.drawCloud(x, y);
+                }
+                
+                // Draw hills
+                this.ctx.fillStyle = '#90EE90';
+                for (let i = 0; i < 3; i++) {
+                    const x = i * 400;
+                    const y = 280;
+                    this.drawHill(x, y);
+                }
+            }
+            
+            drawCloud(x, y) {
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, 20, 0, Math.PI * 2);
+                this.ctx.arc(x + 25, y, 25, 0, Math.PI * 2);
+                this.ctx.arc(x + 50, y, 20, 0, Math.PI * 2);
+                this.ctx.arc(x + 25, y - 15, 15, 0, Math.PI * 2);
+                this.ctx.fill();
+            }
+            
+            drawHill(x, y) {
+                this.ctx.beginPath();
+                this.ctx.ellipse(x, y, 80, 40, 0, 0, Math.PI * 2);
+                this.ctx.fill();
+            }
+            
+            gameLoop(currentTime) {
+                const deltaTime = (currentTime - this.lastTime) / 1000;
+                this.lastTime = currentTime;
+                
+                this.update(deltaTime);
+                this.render();
+                
+                requestAnimationFrame((time) => this.gameLoop(time));
+            }
+        }
+        
+        class Mario {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.width = 24;
+                this.height = 32;
+                this.vx = 0;
+                this.vy = 0;
+                this.grounded = false;
+                this.speed = 200;
+                this.jumpPower = 400;
+                this.animFrame = 0;
+                this.animTimer = 0;
+                this.direction = 1;
+            }
+            
+            update(deltaTime, keys, platforms, blocks, game) {
+                // Handle input
+                if (keys['ArrowLeft']) {
+                    this.vx = -this.speed;
+                    this.direction = -1;
+                } else if (keys['ArrowRight']) {
+                    this.vx = this.speed;
+                    this.direction = 1;
+                } else {
+                    this.vx *= 0.8;
+                }
+                
+                if (keys['Space'] && this.grounded) {
+                    this.vy = -this.jumpPower;
+                    this.grounded = false;
+                    game.playSound(523, 0.2);
+                }
+                
+                // Apply gravity
+                this.vy += 800 * deltaTime;
+                
+                // Update position
+                this.x += this.vx * deltaTime;
+                this.y += this.vy * deltaTime;
+                
+                // Platform collision
+                this.grounded = false;
+                platforms.forEach(platform => {
+                    if (this.isCollidingWith(platform)) {
+                        if (this.vy > 0 && this.y < platform.y) {
+                            this.y = platform.y - this.height;
+                            this.vy = 0;
+                            this.grounded = true;
+                            
+                            // Create ripple effect when landing
+                            if (this.vy > 100) {
+                                game.createRipple(this.x + this.width/2, this.y + this.height);
+                            }
+                        }
+                    }
+                });
+                
+                // Block collision
+                blocks.forEach(block => {
+                    if (this.isCollidingWith(block)) {
+                        if (this.vy < 0 && this.y > block.y) {
+                            // Hit block from below
+                            this.y = block.y + block.height;
+                            this.vy = 0;
+                            
+                            if (block.type === 'mushroom' && !block.hit) {
+                                block.hit = true;
+                                game.coins++;
+                                game.score += 200;
+                                game.playSound(1047, 0.3);
+                                game.createCoinEffect(block.x + block.width/2, block.y);
+                                game.createParticles(block.x + block.width/2, block.y, '#FFD700');
+                            }
+                        }
+                    }
+                });
+                
+                // Keep Mario in bounds
+                if (this.x < 0) this.x = 0;
+                if (this.y > 400) {
+                    this.x = 100;
+                    this.y = 300;
+                    game.lives--;
+                }
+                
+                // Animation
+                this.animTimer += deltaTime;
+                if (this.animTimer > 0.2) {
+                    this.animFrame = (this.animFrame + 1) % 3;
+                    this.animTimer = 0;
+                }
+            }
+            
+            isCollidingWith(obj) {
+                return this.x < obj.x + obj.width &&
+                       this.x + this.width > obj.x &&
+                       this.y < obj.y + obj.height &&
+                       this.y + this.height > obj.y;
+            }
+            
+            isColliding(enemy) {
+                return this.isCollidingWith(enemy);
+            }
+            
+            draw(ctx) {
+                ctx.fillStyle = '#FF0000';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                
+                // Draw Mario's hat
+                ctx.fillStyle = '#8B0000';
+                ctx.fillRect(this.x + 2, this.y, this.width - 4, 8);
+                
+                // Draw Mario's overalls
+                ctx.fillStyle = '#0000FF';
+                ctx.fillRect(this.x + 4, this.y + 12, this.width - 8, 12);
+                
+                // Draw face
+                ctx.fillStyle = '#FFDBAC';
+                ctx.fillRect(this.x + 6, this.y + 8, this.width - 12, 8);
+                
+                // Draw mustache
+                ctx.fillStyle = '#8B4513';
+                ctx.fillRect(this.x + 8, this.y + 12, this.width - 16, 3);
+                
+                // Simple walking animation
+                if (Math.abs(this.vx) > 10) {
+                    ctx.fillStyle = '#8B4513';
+                    const legOffset = Math.sin(this.animFrame * 2) * 2;
+                    ctx.fillRect(this.x + 4 + legOffset, this.y + 24, 6, 8);
+                    ctx.fillRect(this.x + 14 - legOffset, this.y + 24, 6, 8);
+                }
+            }
+        }
+        
+        class Platform {
+            constructor(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+            }
+            
+            draw(ctx) {
+                ctx.fillStyle = '#8B4513';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                
+                // Add some texture
+                ctx.fillStyle = '#A0522D';
+                for (let i = 0; i < this.width; i += 20) {
+                    ctx.fillRect(this.x + i, this.y, 2, this.height);
+                }
+            }
+        }
+        
+        class Block {
+            constructor(x, y, type) {
+                this.x = x;
+                this.y = y;
+                this.width = 30;
+                this.height = 30;
+                this.type = type;
+                this.hit = false;
+            }
+            
+            draw(ctx) {
+                if (this.type === 'mushroom') {
+                    ctx.fillStyle = this.hit ? '#8B4513' : '#FFA500';
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                    
+                    if (!this.hit) {
+                        // Draw question mark
+                        ctx.fillStyle = 'white';
+                        ctx.font = '20px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('?', this.x + this.width/2, this.y + this.height/2 + 7);
+                    }
+                } else {
+                    ctx.fillStyle = '#CD853F';
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                    
+                    // Brick texture
+                    ctx.strokeStyle = '#8B4513';
+                    ctx.lineWidth = 1;
+                    ctx.strokeRect(this.x, this.y, this.width, this.height);
+                    ctx.strokeRect(this.x, this.y + this.height/2, this.width, 0);
+                }
+            }
+        }
+        
+        class Goomba {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.width = 24;
+                this.height = 24;
+                this.vx = -50;
+                this.vy = 0;
+                this.grounded = false;
+            }
+            
+            update(deltaTime, platforms) {
+                // Move horizontally
+                this.x += this.vx * deltaTime;
+                
+                // Apply gravity
+                this.vy += 800 * deltaTime;
+                this.y += this.vy * deltaTime;
+                
+                // Platform collision
+                this.grounded = false;
+                platforms.forEach(platform => {
+                    if (this.x < platform.x + platform.width &&
+                        this.x + this.width > platform.x &&
+                        this.y < platform.y + platform.height &&
+                        this.y + this.height > platform.y) {
+                        
+                        if (this.vy > 0 && this.y < platform.y) {
+                            this.y = platform.y - this.height;
+                            this.vy = 0;
+                            this.grounded = true;
+                        }
+                    }
+                });
+                
+                // Turn around at edges or walls
+                if (this.x <= 0 || this.x >= 1400) {
+                    this.vx = -this.vx;
+                }
+            }
+            
+            draw(ctx) {
+                // Draw Goomba body
+                ctx.fillStyle = '#8B4513';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                
+                // Draw feet
+                ctx.fillStyle = '#654321';
+                ctx.fillRect(this.x + 2, this.y + this.height - 4, 6, 4);
+                ctx.fillRect(this.x + this.width - 8, this.y + this.height - 4, 6, 4);
+                
+                // Draw eyes
+                ctx.fillStyle = 'white';
+                ctx.fillRect(this.x + 4, this.y + 4, 4, 4);
+                ctx.fillRect(this.x + 14, this.y + 4, 4, 4);
+                
+                ctx.fillStyle = 'black';
+                ctx.fillRect(this.x + 5, this.y + 5, 2, 2);
+                ctx.fillRect(this.x + 15, this.y + 5, 2, 2);
+                
+                // Draw angry eyebrows
+                ctx.fillStyle = 'black';
+                ctx.fillRect(this.x + 4, this.y + 2, 4, 2);
+                ctx.fillRect(this.x + 14, this.y + 2, 4, 2);
+            }
+        }
+        
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 200;
+                this.vy = (Math.random() - 0.5) * 200 - 100;
+                this.color = color;
+                this.life = 1.0;
+                this.size = Math.random() * 4 + 2;
+            }
+            
+            update(deltaTime) {
+                this.x += this.vx * deltaTime;
+                this.y += this.vy * deltaTime;
+                this.vy += 300 * deltaTime;
+                this.life -= deltaTime * 2;
+            }
+            
+            draw(ctx) {
+                ctx.globalAlpha = this.life;
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        // Start the game
+        window.addEventListener('load', () => {
+            new MarioGame();
+        });
+    </script>
 </body>
 </html>
